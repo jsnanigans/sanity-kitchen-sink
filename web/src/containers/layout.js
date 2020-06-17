@@ -30,6 +30,7 @@ function LayoutContainer(props) {
             'Missing "Site settings". Open the Studio at http://localhost:3333 and some content in "Site settings"'
           );
         }
+        console.log({data})
         return (
           <Layout
             {...props}
@@ -38,6 +39,7 @@ function LayoutContainer(props) {
             onHideNav={handleHideNav}
             onShowNav={handleShowNav}
             textWhite={textWhite}
+            siteLogo={data.site.logo}
           />
         );
       }}

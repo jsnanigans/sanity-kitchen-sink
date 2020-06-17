@@ -5,12 +5,12 @@ import Hero from "../components/hero";
 import InfoRows from "../components/InfoRows";
 import CTAColumns from "../components/cta-columns";
 import CTA from "../components/cta";
-import Pricing from "../components/pricing";
 import { TopWave, BottomWave } from "../components/wave";
 
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
+import { Helmet } from "react-helmet";
 
 export const query = graphql`
   query PageTemplateQuery($id: String!) {
@@ -24,12 +24,6 @@ export const query = graphql`
       }
     }
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
-      primaryColor {
-        hex
-      }
-      secondaryColor {
-        hex
-      }
       title
       openGraph {
         title
@@ -68,9 +62,6 @@ const Page = (props) => {
     .map((c, i) => {
       let el = null;
       switch (c._type) {
-        case "pricing":
-          el = <Pricing key={c._key} {...c} />;
-          break;
         case "infoRows":
           el = <InfoRows key={c._key} {...c} />;
           break;
@@ -111,6 +102,9 @@ const Page = (props) => {
 
   return (
     <Layout navMenuItems={menuItems} textWhite={true}>
+      <Helmet>
+        <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;700&display=swap" rel="stylesheet" />
+      </Helmet>
       <SEO
         title={pageTitle}
         description={site.description}

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, navigate } from "gatsby";
+import cn from 'classnames'
 
 const doNavigate = target => {
   if (!target || !target.length) {
@@ -38,14 +39,14 @@ const CTALink = props => {
   // External
   if (props.link) {
     return (
-      <a href={props.link} target="_blank" rel="noopener noreferrer">
+      <a href={props.link} target="_blank" className={props.className} rel="noopener noreferrer">
         {props.title}
       </a>
     );
   }
 
   return (
-    <Link className="mr-3" to={link}>
+    <Link className={cn('mr-3', props.className)} to={link}>
       {props.title}
     </Link>
   );
