@@ -36,6 +36,7 @@ const Image = styled.div`
 `
 
 const maybeImage = illustration => {
+  console.log('s')
   let img = null;
   if (illustration && illustration.image && illustration.image.asset && !illustration.disabled) {
     const fluidProps = getFluidGatsbyImage(
